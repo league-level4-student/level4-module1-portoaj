@@ -54,9 +54,9 @@ public class Snake {
 		}
 
 		//2. Iterate through the SnakeSegments in reverse order
-		for(int i = snake.size() - 1; i >= 0; i--)
+		for(int i = snake.size() - 2; i >= 0; i--)
 		{
-			snake.get(i + 1).setLocation(snake.get(i).getLocation());
+			snake.get(i).setLocation(snake.get(i + 1).getLocation());
 		}
 		//2a. Update each snake segment to the location of the segment 
 		//    in front of it.
@@ -110,13 +110,19 @@ public class Snake {
 	public boolean isOutOfBounds() {
 		//1. complete the method so it returns true if the head of the snake is outside of the window
 		//   and false otherwise
-		//if(head.getLocation().x > _)
+		if(head.getLocation().x > _00_SnakeGame.WIDTH || head.getLocation().x < 0 || head.getLocation().y > _00_SnakeGame.HEIGHT || head.getLocation().y < 0)
+			return true;
 		return false;
 	}
 	
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
+		for(int i = 1; i < snake.size(); i++)
+		{
+			if(snake.get(i).getLocation() == head.getLocation())
+				return true;
+		}
 		
 		return false;
 	}
@@ -124,6 +130,11 @@ public class Snake {
 	public boolean isLocationOnSnake(Location loc) {
 		//1. complete the method so it returns true if the passed in
 		//   location is located on the snake
+		for(int i = 0; i < snake.size(); i++)
+		{
+			if(snake.get(i).getLocation().equals(loc))
+				return true;
+		}
 		
 		return false;
 	}

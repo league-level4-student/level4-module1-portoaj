@@ -117,10 +117,10 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch(e.getKeyCode())
 		{
 			case KeyEvent.VK_W:
-				snake.setDirection(Direction.UP);
+				snake.setDirection(Direction.DOWN);
 				break;
 			case KeyEvent.VK_S:
-				snake.setDirection(Direction.DOWN);
+				snake.setDirection(Direction.UP);
 				break;
 			case KeyEvent.VK_A:
 				snake.setDirection(Direction.LEFT);
